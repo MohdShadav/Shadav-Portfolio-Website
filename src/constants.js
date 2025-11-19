@@ -14,7 +14,7 @@ import reactjsLogo from './assets/tech_logo/reactjs.png';
 // backend Logo
 import springbootLogo from './assets/tech_logo/springboot.png';
 import hibernateLogo  from './assets/tech_logo/hibernateLogo.png';
-import JdbcLogo  from './assets/tech_logo/jdbcLogo.png';
+import jdbcLogo from "./assets/tech_logo/jdbcLogo.png";
 import JSPandServlet  from './assets/tech_logo/JSPandServlet.png';
 import JwtLogo  from './assets/tech_logo/jwtLogo.png';
 import RestApiLogo  from './assets/tech_logo/RestApiLogo.png';
@@ -74,7 +74,7 @@ export const SkillsInfo = [
     skills: [
       { name: 'Springboot', logo: springbootLogo },
        { name: 'Hibernate', logo: hibernateLogo},
-      { name: 'JDBC', logo: JdbcLogo},
+      { name: 'JDBC', logo: jdbcLogo},
       { name: 'JWT', logo: JwtLogo},
       { name: 'REST APIs', logo: RestApiLogo},
       { name: 'Spring Security', logo: SpringSecurityLogo},
