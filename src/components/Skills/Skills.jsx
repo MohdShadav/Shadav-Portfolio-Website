@@ -17,49 +17,48 @@ const Skills = () => (
       </p>
     </div>
 
-    {/* Skill Categories */}
-    <div className="flex flex-wrap gap-1 lg:gap-5 py-10 justify-between">
-      {SkillsInfo.map((category) => (
-        <div
-          key={category.title}
-          className="bg-gray-900 backdrop-blur-md px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl border border-white 
-          shadow-[0_0_20px_1px_rgba(130,69,236,0.3)]"
-        >
-          <h3 className="text-2xl sm:text-3xl font-semibold text-gray-400 mb-4 text-center">
-            {category.title}
-          </h3>
+   {/* Skill Categories */}
+<div className="flex flex-wrap justify-center gap-4 py-8">
+  {SkillsInfo.map((category) => (
+    <div
+      key={category.title}
+      className="w-full sm:w-[48%] bg-gray-900 backdrop-blur-md px-4 sm:px-8 py-6 sm:py-8 
+      rounded-2xl border border-white shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] 
+      transition-transform duration-300 hover:scale-[1.02]"
+    >
+      <h3 className="text-xl sm:text-2xl font-semibold text-gray-300 mb-4 text-center">
+        {category.title}
+      </h3>
 
-          {/* Skill Items - 3 per row on larger screens */}
-          <Tilt
-            key={category.title}
-            tiltMaxAngleX={20}
-            tiltMaxAngleY={20}
-            perspective={1000}
-            scale={1.05}
-            transitionSpeed={1000}
-            gyroscope={true}
-          >
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
-              {category.skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="flex items-center justify-center space-x-2 bg-transparent border-2 border-gray-700 rounded-3xl py-2 px-2 sm:py-2 sm:px-2 text-center"
-                >
-                  <img
-                    src={skill.logo}
-                    alt={`${skill.name} logo`}
-                    className="w-6 h-6 sm:w-8 sm:h-8"
-                  />
-                  <span className="text-xs sm:text-sm text-gray-300">
-                    {skill.name}
-                  </span>
-                </div>
-              ))}
+      <Tilt
+        tiltMaxAngleX={15}
+        tiltMaxAngleY={15}
+        perspective={800}
+        scale={1.03}
+        transitionSpeed={1000}
+        gyroscope={true}
+      >
+        <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-2 w-[90%] mx-auto">
+          {category.skills.map((skill) => (
+            <div
+              key={skill.name}
+              className="flex flex-col sm:flex-row items-center justify-center gap-1 bg-transparent border border-gray-700 rounded-xl py-2 px-2 text-center"
+            >
+              <img
+                src={skill.logo}
+                alt={`${skill.name} logo`}
+                className="w-5 h-5 sm:w-6 sm:h-6"
+              />
+              <span className="text-[10px] sm:text-xs text-gray-300">{skill.name}</span>
             </div>
-          </Tilt>
+          ))}
         </div>
-      ))}
+      </Tilt>
     </div>
+  ))}
+</div>
+
+
   </section>
 );
 

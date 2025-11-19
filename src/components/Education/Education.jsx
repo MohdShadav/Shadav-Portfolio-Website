@@ -1,53 +1,61 @@
 import React from "react";
-import { education } from "../../constants"; // Import the education data
+import { education } from "../../constants";
 
 const Education = () => {
   return (
     <section
       id="education"
-      className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans bg-skills-gradient clip-path-custom-3"
+      className="py-24 px-[6vw] md:px-[8vw] lg:px-[12vw] font-sans bg-gradient-to-b from-gray-950 via-gray-900 to-black relative overflow-hidden"
     >
+      {/* Decorative gradient overlay */}
+      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top_right,_rgba(130,69,236,0.3),_transparent_70%)] pointer-events-none"></div>
+
       {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white">EDUCATION</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
-          My education has been a journey of learning and development. Here are the details of my academic background
+      <div className="text-center mb-16 relative z-10">
+        <h2 className="text-4xl md:text-4xl font-extrabold text-white tracking-wide">
+          EDUCATION
+        </h2>
+        <div className="w-28 h-1 bg-purple-500 mx-auto mt-3 rounded-full"></div>
+        <p className="text-gray-400 mt-5 text-lg max-w-2xl mx-auto leading-relaxed">
+          My education has been a journey of continuous learning and growth.
+          Here’s a quick look at my academic milestones.
         </p>
       </div>
 
-      {/* Education Timeline */}
-      <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 sm:-translate-x-0 w-1 bg-white h-full"></div>
+      {/* Timeline Container */}
+      <div className="relative z-10">
+        {/* Vertical Line for Timeline */}
+        <div className="hidden sm:block absolute left-1/2 top-0 w-1 h-full bg-gradient-to-b from-purple-500 to-gray-600 transform -translate-x-1/2"></div>
 
-        {/* Education Entries */}
+        {/* Education Items */}
         {education.map((edu, index) => (
           <div
             key={edu.id}
-            className={`flex flex-col sm:flex-row items-center mb-16 ${
+            className={`relative flex flex-col sm:flex-row items-center mb-20 ${
               index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
             }`}
           >
-            {/* Timeline Circle */}
-            <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 bg-gray-400 border-4 border-[#8245ec] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex justify-center items-center z-10">
+            {/* ✅ Timeline Dot moved to LEFT side for all entries
+            <div className="hidden sm:flex absolute left-0 transform translate-x-[-50%] bg-gray-800 border-4 border-purple-500 w-14 h-14 rounded-full justify-center items-center shadow-[0_0_25px_4px_rgba(130,69,236,0.5)] z-20">
               <img
                 src={edu.img}
                 alt={edu.school}
-                className="w-full h-full object-cover rounded-full"
+                className="w-10 h-10 object-cover rounded-full"
               />
-            </div>
+            </div> */}
 
-            {/* Content Section */}
+
+            {/* Education Card */}
             <div
-              className={`w-full sm:max-w-md p-4 sm:p-8 rounded-2xl shadow-2xl border border-white bg-gray-900 backdrop-blur-md shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] ${
-                index % 2 === 0 ? "sm:ml-0" : "sm:mr-0"
-              } sm:ml-44 sm:mr-44 ml-8 transform transition-transform duration-300 hover:scale-105`}
+              className={`relative w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl p-6 sm:p-8 mt-8 sm:mt-0 rounded-2xl shadow-2xl border border-gray-800 bg-gray-900/90 backdrop-blur-md hover:shadow-[0_0_40px_4px_rgba(130,69,236,0.5)] transition-transform duration-300 hover:scale-[1.03] ${
+                index % 2 === 0
+                  ? "sm:ml-0 sm:mr-auto sm:pl-10"
+                  : "sm:mr-0 sm:ml-auto sm:pr-10"
+              }`}
             >
-              {/* Flex container for image and text */}
-              <div className="flex items-center space-x-6">
-                {/* School Logo/Image */}
-                <div className="w-24 h-16 bg-white rounded-md overflow-hidden">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                {/* Image / Logo */}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl overflow-hidden border border-gray-700">
                   <img
                     src={edu.img}
                     alt={edu.school}
@@ -55,23 +63,22 @@ const Education = () => {
                   />
                 </div>
 
-                {/* Degree, School Name, and Date */}
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl sm:text-xl font-semibold text-white">
-                      {edu.degree}
-                    </h3>
-                    <h4 className="text-md sm:text-sm text-gray-300">
-                      {edu.school}
-                    </h4>
-                  </div>
-                  {/* Date at the bottom */}
-                  <p className="text-sm text-gray-500 mt-2">{edu.date}</p>
+                {/* Content */}
+                <div>
+                  <h3 className="text-xl md:text-2xl font-semibold text-white">
+                    {edu.degree}
+                  </h3>
+                  <h4 className="text-gray-300 text-sm md:text-base">
+                    {edu.school}
+                  </h4>
+                  <p className="text-gray-400 text-sm mt-2">{edu.date}</p>
                 </div>
               </div>
 
-              <p className="mt-4 text-gray-400 font-bold">Grade: {edu.grade}</p>
-              <p className="mt-4 text-gray-400">{edu.desc}</p>
+              <p className="mt-4 text-gray-300 font-semibold">
+                Grade: <span className="text-purple-400">{edu.grade}</span>
+              </p>
+              <p className="mt-3 text-gray-400 leading-relaxed">{edu.desc}</p>
             </div>
           </div>
         ))}
